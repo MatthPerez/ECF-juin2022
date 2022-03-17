@@ -1,0 +1,196 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@200&display=swap');
+$roboto: 'Roboto', cursive, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+$montserrat: 'Montserrat', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+$comfortaa: 'Comfortaa', cursive;
+
+$blue0: rgb(34, 14, 90);
+$blue1: rgb(48, 22, 121);
+$blue2: rgb(67, 39, 145);
+$blue3: rgb(95, 66, 175);
+$blue4: rgb(126, 100, 197);
+$blue5: rgb(162, 141, 219);
+$blue6: rgb(201, 188, 238);
+$blue7: rgb(229, 224, 243);
+$blue8: rgb(249, 248, 252);
+
+// @for $i from 1 through 8 {
+//   .f-blue#{$i} {color: $blue#{$i}};
+// }
+.f-blue0 {color: $blue0};
+.f-blue1 {color: $blue1};
+.f-blue2 {color: $blue2};
+.f-blue3 {color: $blue3};
+.f-blue4 {color: $blue4};
+.f-blue5 {color: $blue5};
+.f-blue6 {color: $blue6};
+.f-blue7 {color: $blue7};
+.f-blue8 {color: $blue8};
+
+.f-white {color: white};
+.f-red {color: red};
+.f-blue {color: blue};
+.f-green {color: green};
+.f-yellow {color: yellow};
+.f-brown {color: brown};
+
+@for $i from -10 through 10 {
+  .z#{$i} {z-index: #{$i}};
+}
+
+@for $i from 1 through 10 {
+  .ls#{$i} {letter-spacing: #{$i}px;}
+  .f#{$i}em {font-size: #{$i}em};
+}
+
+@for $i from 1 through 100 {
+  .top#{$i}em {top: #{$i}em};
+  .top#{$i}px {top: #{$i}px};
+  .w#{$i} {width: #{$i}vw};
+  .h#{$i} {height: #{$i}vh};
+  .mt#{$i} {margin-left: #{$i}vh};
+  .mr#{$i} {margin-left: #{$i}vw};
+  .mb#{$i} {margin-left: #{$i}vh};
+  .ml#{$i} {margin-left: #{$i}vw};
+  .w#{$i}em {width: #{$i}em};
+  .h#{$i}em {width: #{$i}em};
+  .mt#{$i}em {margin-left: #{$i}em};
+  .mr#{$i}em {margin-left: #{$i}em};
+  .mb#{$i}em {margin-left: #{$i}em};
+  .ml#{$i}em {margin-left: #{$i}em};
+}
+
+@for $i from 1 through 1000 {
+  .w#{$i}px {width: #{$i}px};
+  .h#{$i}px {height: #{$i}px};
+  .mt#{$i}px {margin-top: #{$i}px};
+  .mr#{$i}px {margin-right: #{$i}px};
+  .mb#{$i}px {margin-bottom: #{$i}px};
+  .ml#{$i}px {margin-left: #{$i}px};
+  .f#{$i}px {font-size: #{$i}px};
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: $roboto;
+  background: $blue8;
+}
+
+.just {text-align: justify;}
+.cent {text-align: center;}
+.shadowed {text-shadow: 1px 2px 7px grey;}
+.central {width: 80vw; margin-left: 10vw;}
+.active {font-weight: bold;}
+.top-shadow {background: linear-gradient(black, rgba(0, 0, 0, 0));}
+.relative {position: relative}
+.absolute {position: absolute}
+.fixed {position: fixed}
+.sticky {position: sticky}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: $comfortaa;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 5%;
+  bottom: 0;
+  background: $blue6;
+  opacity: 0.6;
+  text-align: center;
+  span {
+    padding-right: 5px;
+  }
+}
+
+nav {
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: $blue6;
+  opacity: 0.9;
+  color: $blue0;
+  font-family: $roboto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.img-logo {
+  height: 3em;
+}
+
+.logo {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.menu {
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+    li {
+      list-style: none;
+      font-size: 1.2em;
+      padding: 0 10px;
+    }
+  }
+}
+
+a {
+  color: $blue0;
+  text-decoration: none;
+  border: none;
+  background: rgba(255, 255, 255, 0);
+  transition: 400ms all ease;
+  &:hover {
+    color: $blue3;
+  }
+}
+
+.btn1 {
+  padding: 15px;
+  color: $blue0;
+  text-decoration: none;
+  border: none;
+  background: rgba(255, 255, 255, 0);
+  transition: 400ms all ease;
+  border-radius: 10px;
+  &:hover {
+    transform: translate(0, -5px);
+    box-shadow: 5px 0 8px gray;
+  }
+}
+
+.bg {
+  left: 0; top: 0; right: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+
+
+
+
+
+
+
+
+
+
+
