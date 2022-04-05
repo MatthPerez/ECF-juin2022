@@ -7,3 +7,4 @@
   <script src='<?php echo $level ?>js/jQuery.js'></script>
   <title><?php echo $title ?></title>
 </head>
+

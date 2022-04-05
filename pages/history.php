@@ -8,15 +8,21 @@ $active1 = '';
 $active2 = 'active';
 $active3 = '';
 $active4 = '';
+session_start();
+if (isset($_SESSION['user'])) {
+  $connect = $_SESSION['user'] . '<br>Se déconnecter';
+} else {
+  $connect = 'Se connecter';
+}
 require '../back/head.php';
 require '../back/nav.php';
 ?>
 
 <body>
-  <section class="central">
+  <section class="central neutra f11dem">
     <h2>L'histoire du groupe Hypnos</h2>
     <p class="just">Le groupe hôtelier Hypnos a été fondé en 2004. Nous sommes propriétaire de 7 établissements répartis aux quatre coins de l'héxagone. Lorsque nous avons créé ces établissements, notre but était de faire de chacun d'eux une destination idéale pour les couples en quête d’un séjour romantique. Même si nous considérons qu'aujourd'hui notre but est atteint (comme la tarte), nous ne cessons de recueillir l'avis de nos visiteurs pour sans cesse améliorer notre accueil et nos services.</p>
-  
+
     <h2>Notre philosophie</h2>
     <p class="just">Nos établissements sont prioritairement conçus pour les couples. Vous retrouverez nos établissements dans certaines des plus belles destinations de France pour un moment fabuleux et inoubliable avec la compagnie de votre choix. L'idée est de se détendre et de profiter au maximum. Alors laissez-vous porter et ressourcez-vous dans nos structures. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis, aspernatur amet placeat laborum soluta dolorum totam illo dolorem maiores reiciendis dolore incidunt repudiandae, mollitia nam rem exercitationem, adipisci veniam. Harum, aspernatur? Ipsam id iure, adipisci illo minus quisquam eligendi ratione ut ex quis eaque vel dicta doloribus reiciendis ab suscipit. Iste, cum asperiores qui voluptatum velit expedita sapiente adipisci cupiditate et architecto doloremque corrupti, dignissimos neque. Aut officiis magni quod optio mollitia est ratione exercitationem perferendis accusamus repudiandae, inventore suscipit eos, corporis, nostrum veniam voluptas! Natus aspernatur, perferendis, saepe nesciunt repudiandae nulla placeat error dignissimos quod nam delectus, eos omnis maxime rem sint est eum. Cupiditate quidem est omnis. Perspiciatis numquam sequi, magni blanditiis doloremque ab neque eum totam maiores at iste provident? Perferendis quis tenetur, cum ut laboriosam officiis distinctio excepturi molestiae consequuntur iure omnis, debitis illum, neque quo quod nesciunt nobis pariatur dolore unde! Tempore ipsa cum eligendi.</p>
 
@@ -29,9 +35,9 @@ require '../back/nav.php';
 </body>
 
 <footer>
-  <span>Groupe Hypnos &copy 2022</span>  
+  <span>Groupe Hypnos &copy 2022</span>
   <span><?php
-  
-  require '../back/icons.php';
-  ?></span>
+
+        require '../back/icons.php';
+        ?></span>
 </footer>
