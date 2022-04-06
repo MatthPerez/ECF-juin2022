@@ -19,7 +19,8 @@ require 'head.php';
   <!-- CREATION BDD -->
   <?php
   try {
-    $bdd = new PDO('mysql:host=localhost;dbname=hypnos;charset=utf8', 'root', '');
+    require_once 'bdd_variables.php';
+    $bdd = new PDO('mysql:host=' . $bddhost . ';dbname=' . $bdd_name . ';charset=utf8', $bdd_username, $bdd_password);
   } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
   }
@@ -89,15 +90,16 @@ require 'head.php';
     <fieldset class="central-small">
       <legend class="bold f-red">Supprimer une suite</legend>
       <form method="POST" action="del_suite.php">
-        <label for="suite_selection">Choix de la suite</label>
-        <select name="suite" id="suite" class="mb1em" required>
+        <label for="suite">Choix de la suite</label>
+        <select name="suite_name" id="suite_name" class="mb1em" required>
           <?php
           $suites = $bdd->query('SELECT * FROM suites');
           $a = 0;
           while ($suite = $suites->fetch(PDO::FETCH_OBJ)) {
             $a++;
             if ($suite->Branch == $_SESSION['branch']) {
-              echo '<option value="' . $a . '">' . $suite->Suite . '</option>';
+              echo '<option value="' . $a . '">' . $suite->Suite . '</option>
+          ';
             }
           }
           ?>
@@ -112,20 +114,19 @@ require 'head.php';
       <legend class="bold f-blue">Mettre à jour une suite</legend>
       <form method="POST" action="update_suite.php">
         <label for="suite_selection">Choix de la suite</label>
-        <select name="suite" id="suite" class="mb1em" required>
+        <select name="old_suite" id="old_suite" class="mb1em" required>
           <?php
           $suites = $bdd->query('SELECT * FROM suites');
-          $a = 0;
           while ($suite = $suites->fetch(PDO::FETCH_OBJ)) {
-            $a++;
             if ($suite->Branch == $_SESSION['branch']) {
-              echo '<option value="' . $a . '">' . $suite->Suite . '</option>';
+              echo '<option value="' . $suite->Suite . '">' . $suite->Suite . '</option>
+          ';
             }
           }
           ?>
         </select><br>
         <label for="name">Nouveau nom de la suite</label>
-        <input type="text" name="nn_suite" id="nn_suite" class="mb1em" required><br>
+        <input type="text" name="new_suite" id="new_suite" class="mb1em" required><br>
         <label for="price">Nouveau prix</label>
         <input type="number" name="price" id="price" class="mb1em" required><br>
         <input type="submit" name="update_suite" id="update_suite" class="btn3">

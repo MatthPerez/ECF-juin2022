@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 try {
   $bdd = new PDO('mysql:host=localhost;dbname=hypnos;charset=utf8', 'root', '');
@@ -7,8 +8,12 @@ try {
 }
 
 if (isset($_POST['suite']) and isset($_POST['price'])) {
-  $request = $bdd->prepare("INSERT INTO suites(Suite, Branch, Price) VALUES (?,?,?)");
-  $request->execute(array($_POST['suite'], $_SESSION['branch'], $_POST['price']));
+  $request = $bdd->prepare("INSERT INTO suites(Suite, Branch, Price) VALUES (:suite,:branch,:price)");
+  $request->execute([
+    "suite" => $_POST['suite'],
+    "branch" => $_SESSION['branch'],
+    "price" => $_POST['price'],
+  ]);
 }
-header('Location: manager.php');
 
+header('Location: manager.php');

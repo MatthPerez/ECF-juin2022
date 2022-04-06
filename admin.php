@@ -18,7 +18,8 @@ require 'back/head.php';
   <!-- CREATION BDD -->
   <?php
   try {
-    $bdd = new PDO('mysql:host=localhost;dbname=hypnos;charset=utf8', 'root', '');
+    require_once 'back/bdd_variables.php';
+    $bdd = new PDO('mysql:host=' . $bddhost . ';dbname=' . $bdd_name . ';charset=utf8', $bdd_username, $bdd_password);
   } catch (Exception $e) {
     die('Erreur : ' . $e->getMessage());
   }
