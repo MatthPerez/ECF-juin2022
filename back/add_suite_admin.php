@@ -17,4 +17,4 @@ if (isset($_POST['suite']) and isset($_POST['price'])) {
   ]);
 }
 
-header('Location: manager.php');
+header('Location: ../admin.php');

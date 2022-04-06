@@ -36315,6 +36315,11 @@ html:selection, body:selection {
   text-shadow: 1px 2px 7px grey;
 }
 
+.box-shadowed {
+  -webkit-box-shadow: 5px 8px 10px #7e64c5;
+          box-shadow: 5px 8px 10px #7e64c5;
+}
+
 .central {
   width: 80%;
   margin-left: 10%;
@@ -36323,6 +36328,13 @@ html:selection, body:selection {
 .central-small {
   width: 50%;
   margin-left: 25%;
+}
+
+@media screen and (max-width: 768px) {
+  .central-small {
+    width: 80%;
+    margin-left: 10%;
+  }
 }
 
 .active {
@@ -36546,6 +36558,28 @@ html:selection, body:selection {
   font-family: "Comfortaa", cursive;
 }
 
+input {
+  width: 70%;
+}
+
+@media screen and (max-width: 768px) {
+  input {
+    width: 80%;
+  }
+}
+
+select {
+  width: 71%;
+  text-align: center;
+  height: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  select {
+    width: 81%;
+  }
+}
+
 .grad {
   background-image: -webkit-gradient(linear, left top, right bottom, from(#4affde), color-stop(40%, #5b9dff), color-stop(60%, #d06bff), to(#ff34d2));
   background-image: linear-gradient(to bottom right, #4affde 0%, #5b9dff 40%, #d06bff 60%, #ff34d2 100%);
@@ -36754,6 +36788,12 @@ a:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
+@media screen and (max-width: 768px) {
+  .btn3 {
+    width: 80%;
+  }
+}
+
 .bg {
   left: 0;
   top: 0;
@@ -36816,30 +36856,43 @@ a:hover {
           align-items: center;
 }
 
+tr {
+  background-color: #e5e0f3;
+  -webkit-transition: 300ms background-color ease;
+  transition: 300ms background-color ease;
+}
+
+tr:hover {
+  background-color: #c9bcee;
+}
+
+tr td {
+  border: 1px solid black;
+  padding: 5px 10px;
+}
+
+@media screen and (max-width: 768px) {
+  tr td {
+    font-size: 0.8rem;
+    padding: 2px 4px;
+    margin: 0;
+  }
+}
+
 table {
-  font-family: "Roboto", cursive, sans-serif;
   border-collapse: collapse;
 }
 
 table thead td {
   font-weight: bold;
   text-align: center;
-  background-color: #f089a8;
+  background-color: #a28ddb;
   border: 2px solid black;
 }
 
-tr {
-  background-color: #faf4f6;
-  -webkit-transition: 300ms background-color ease;
-  transition: 300ms background-color ease;
-}
-
-tr:hover {
-  background-color: #f4d1dc;
-}
-
-tr td {
-  border: 1px solid black;
-  padding: 5px 10px;
+@media screen and (max-width: 768px) {
+  table {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=style.css.map */

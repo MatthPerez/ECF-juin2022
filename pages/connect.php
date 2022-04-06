@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
 <body class="bg-cool">
   <h1 class="cent">Espace de connexion</h1>
 
-  <section class="mt1em bg-blur central-small cent bordered">
+  <section class="mt1em bg-blur central-small cent bordered box-shadowed">
     <h1>Se connecter</h1>
     <form method="post">
       <label for="username">Nom d'utilisateur</label>
@@ -73,8 +73,8 @@ if (isset($_POST['submit'])) {
     </form>
   </section>
 
-  <section class="mt3em mb3em bg-blur central-small cent bordered">
-    <h1 class="mt2em">Créer un compte</h1>
+  <section class="mt3em mb3em bg-blur central-small cent bordered box-shadowed">
+    <h1 class="mt1em">Créer un compte client</h1>
     <form action="post">
       <label for="username">Nom d'utilisateur</label>
       <input type="text" name="username" id="username" class="mb1em" required><br>

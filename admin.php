@@ -42,6 +42,7 @@ require 'back/head.php';
           <td>Mot de passe</td>
           <td>Mail</td>
           <td>Statut</td>
+          <td>Etablissement</td>
           <td>Actions</td>
         </thead>
         <tbody>
@@ -58,10 +59,11 @@ require 'back/head.php';
               <td><?= $utilisateur->Password ?></td>
               <td><?= $utilisateur->Mail ?></td>
               <td><?= $utilisateur->Status ?></td>
+              <td><?= $utilisateur->Branch ?></td>
               <td class="f-red cent">
                 <?php
                 if ($utilisateur->Status != 'Administrateur') {
-                  echo 'Supprimer';
+                  echo '<a href="back/del_user_admin.php">Supprimer</a>';
                 } else {
                   echo '-';
                 }
@@ -77,16 +79,19 @@ require 'back/head.php';
 
     <div class="central-small cent bordered bg-cool">
       <h2>Ajouter un utilisateur</h2>
-      <form action="back/add_user.php" method="POST">
-        <label for="username">Nom d'utilisateur</label>
-        <input type="text" name="username" id="username" class="mb1em"><br>
-        <label for="password">Mot de passe</label>
-        <input type="password" name="password" id="password" class="mb1em"><br>
-        <label for="mail">Courriel</label>
-        <input type="email" name="mail" id="mail" class="mb1em"><br>
-        <label for="status">Statut</label>
-        <input type="text" name="status" id="status" class="mb1em"><br>
-        <label for="branch">Etablissement</label>
+      <form action="back/add_user_admin.php" method="POST">
+        <label for="username">Nom d'utilisateur</label><br>
+        <input type="text" name="username" id="username" class="mb1em" required><br>
+        <label for="password">Mot de passe</label><br>
+        <input type="text" name="password" id="password" class="mb1em" required><br>
+        <label for="mail">Courriel</label><br>
+        <input type="email" name="mail" id="mail" class="mb1em" required><br>
+        <label for="status">Statut</label><br>
+        <select name="status" id="status" class="mb1em" required>
+          <option value="Client">Client</option>
+          <option value="Gérant">Gérant</option>
+        </select><br>
+        <label for="branch">Etablissement</label><br>
         <input type="text" name="branch" id="branch" class="mb1em" class="mb1em"><br>
         <input type="submit" class="btn3 mb1em">
       </form>
@@ -124,7 +129,7 @@ require 'back/head.php';
               <td><?= $branch->Branch ?></td>
               <td><?= $branch->Location ?></td>
               <td><?= $branch->Manager ?></td>
-              <td class="f-red">Supprimer</td>
+              <td>Supprimer</td>
             </tr>
           <?php
           }
@@ -197,7 +202,17 @@ require 'back/head.php';
       <form method="POST" action="add_suite.php">
         <label for="suite">Nom de la suite</label>
         <input type="text" name="suite" id="suite" class="mb1em" required><br>
-        <label for="price">Prix de la nuit</label>
+        <label for="suite_selection">Nom de l'établissement</label>
+        <select name="branch" id="branch" class="mb1em" required>
+          <?php
+          $branches = $bdd->query('SELECT * FROM etablissements');
+          while ($branch = $branches->fetch(PDO::FETCH_OBJ)) {
+            echo '<option value="' . $branch->Branch . '">' . $branch->Branch . '</option>
+          ';
+          }
+          ?>
+        </select><br>
+
         <input type="number" name="price" id="price" class="mb1em" required><br>
         <input type="submit" name="add_suite" id="add_suite" class="btn3 mb1em">
       </form>

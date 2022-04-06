@@ -1,5 +1,7 @@
 <?php
 
+// Ajouter toutes les fonctions dans ce fichier
+
 function deleteSuite(mysqli $bdd, $Suite)
 {
   $sql = "DELETE FROM `Suite` WHERE $Suite = '" . $Suite . "'";
