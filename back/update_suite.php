@@ -7,19 +7,22 @@ try {
   die('Erreur : ' . $e->getMessage());
 }
 
-if (isset($_POST['old_suite']) and isset($_POST['new_suite']) and isset($_POST['price'])) {
-  // Prix
-  $request = $bdd->prepare("UPDATE suites SET Price = :new_price WHERE Suite = :old_name");
-  $request->execute([
-    "new_price" => $_POST['price'],
-    "old_name" => $_POST['old_suite'],
-  ]);
-  // Nom
-  $request = $bdd->prepare("UPDATE suites SET Suite = :new_name WHERE Suite = :old_name");
-  $request->execute([
-    "old_name" => $_POST['old_suite'],
-    "new_name" => $_POST['new_suite']
-  ]);
+if (isset($_POST['new_suite']) and isset($_POST['persons']) and isset($_POST['link']) and isset($_POST['price'])) {
+  $request = $bdd->prepare("UPDATE suites SET
+  Suite = :new_suite,
+  Persons = :persons,
+  Link = :link,
+  Price = :price
+  WHERE Suite = :old_suite");
 }
+$request->execute([
+  "old_suite" => $_POST['old_suite'],
+  "new_suite" => $_POST['new_suite'],
+  "persons" => $_POST['persons'],
+  "link" => $_POST['link'],
+  "price" => $_POST['price'],
+]);
+header('Location: ../pages/manager.php');
 
-header('Location: manager.php');
+// var_dump($_POST);
+// var_dump($_SESSION);

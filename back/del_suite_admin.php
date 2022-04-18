@@ -7,8 +7,10 @@ try {
   die('Erreur : ' . $e->getMessage());
 }
 
-if (isset($_POST['suite_name'])) {
-  $suite_name = $_POST['suite_name'];
-  $request = $bdd->exec("DELETE FROM suites WHERE id = '" . $_POST['suite_name'] . "'");
+if (isset($_POST['suite'])) {
+  $suite = $_POST['suite'];
+  $request = $bdd->exec("DELETE FROM suites WHERE Suite = '" . $_POST['suite'] . "'");
 }
 header('Location: ../admin.php');
+
+// var_dump($_POST);

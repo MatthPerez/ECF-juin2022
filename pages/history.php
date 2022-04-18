@@ -8,6 +8,7 @@ $active1 = '';
 $active2 = 'active';
 $active3 = '';
 $active4 = '';
+$script = '';
 session_start();
 if (isset($_SESSION['user'])) {
   $connect = $_SESSION['user'] . '<br>Se déconnecter';
@@ -35,9 +36,15 @@ require '../back/nav.php';
 </body>
 
 <footer>
+  <?php
+  require '../back/icons.php';
+  echo '
   <span>Groupe Hypnos &copy 2022</span>
-  <span><?php
-
-        require '../back/icons.php';
-        ?></span>
+  <span>-</span>
+  <span>' . $facebook . '</span>
+  <span>' . $instagram . '</span>
+  <span>' . $twitter . '</span>
+  <span>' . $youtube . '</span>
+  ';
+  ?>
 </footer>

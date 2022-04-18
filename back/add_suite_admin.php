@@ -12,9 +12,11 @@ if (isset($_POST['suite']) and isset($_POST['price'])) {
   $request = $bdd->prepare("INSERT INTO suites(Suite, Branch, Price) VALUES (:suite,:branch,:price)");
   $request->execute([
     "suite" => $_POST['suite'],
-    "branch" => $_SESSION['branch'],
+    "branch" => $_POST['branch'],
     "price" => $_POST['price'],
   ]);
 }
 
 header('Location: ../admin.php');
+
+// var_dump($_POST);

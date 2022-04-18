@@ -6,5 +6,6 @@
   <link rel="stylesheet" href="<?php echo $style ?>">
   <script src='<?php echo $level ?>js/jQuery.js'></script>
   <title><?php echo $title ?></title>
+  <?php echo $script ?>
 </head>
 

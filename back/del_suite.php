@@ -9,6 +9,8 @@ try {
 
 if (isset($_POST['suite_name'])) {
   $suite_name = $_POST['suite_name'];
-  $request = $bdd->exec("DELETE FROM suites WHERE id = '" . $_POST['suite_name'] . "'");
+  $request = $bdd->exec("DELETE FROM suites WHERE Suite = '" . $_POST['suite_name'] . "'");
 }
-header('Location: manager.php');
+header('Location: ../pages/manager.php');
+
+// var_dump($_POST);

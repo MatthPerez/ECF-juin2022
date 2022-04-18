@@ -8,13 +8,15 @@ try {
   die('Erreur : ' . $e->getMessage());
 }
 
-if (isset($_POST['suite']) and isset($_POST['price'])) {
-  $request = $bdd->prepare("INSERT INTO suites(Suite, Branch, Price) VALUES (:suite,:branch,:price)");
+if (isset($_POST['suite']) and isset($_POST['persons']) and isset($_POST['link']) and isset($_POST['price'])) {
+  $request = $bdd->prepare("INSERT INTO suites(Suite, Branch, Persons, Link, Price) VALUES (:suite,:branch,:persons,:link,:price)");
   $request->execute([
     "suite" => $_POST['suite'],
     "branch" => $_SESSION['branch'],
     "price" => $_POST['price'],
+    "persons" => $_POST['persons'],
+    "link" => $_POST['link'],
   ]);
 }
 
-header('Location: manager.php');
+header('Location: ../pages/manager.php');

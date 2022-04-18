@@ -15,6 +15,11 @@ $quicksand: 'Quicksand', sans-serif;
 }
 $neutra: 'Neutra', cursive;
 
+*::selection {
+  background-color: #000;
+  color: #fff;
+}
+
 $blue0: rgb(34, 14, 90);
 $blue1: rgb(48, 22, 121);
 $blue2: rgb(67, 39, 145);
@@ -54,6 +59,7 @@ $red8: rgb(247, 215, 215);
 .f-green {color: green};
 .f-yellow {color: yellow};
 .f-brown {color: brown};
+.f-black {color: black};
 
 @for $i from -10 through 15 {
   .z#{$i} {z-index: #{$i}};
@@ -65,9 +71,11 @@ $red8: rgb(247, 215, 215);
   .f#{$i}rem {font-size: #{$i}rem}
   .m#{$i}em {margin: #{$i}em}
   .mv#{$i}px {margin: #{$i}px 0}
+  .mv#{$i}em {margin: #{$i}em 0}
   .mh#{$i}px {margin: 0 #{$i}px}
   .p#{$i}em {padding: #{$i}em}
   .pv#{$i}px {padding: #{$i}px 0}
+  .pv#{$i}em {padding: #{$i}em 0}
   .ph#{$i}px {padding: 0 #{$i}px}
 }
 
@@ -80,7 +88,7 @@ $red8: rgb(247, 215, 215);
   .mb#{$i} {margin-bottom: #{$i}vh};
   .ml#{$i} {margin-left: #{$i}vw};
   .w#{$i}em {width: #{$i}em};
-  .h#{$i}em {width: #{$i}em};
+  .h#{$i}em {height: #{$i}em};
   .mt#{$i}em {margin-top: #{$i}em};
   .mr#{$i}em {margin-right: #{$i}em};
   .mb#{$i}em {margin-bottom: #{$i}em};
@@ -89,8 +97,9 @@ $red8: rgb(247, 215, 215);
   .pr#{$i}em {padding-right: #{$i}em};
   .pb#{$i}em {padding-bottom: #{$i}em};
   .pl#{$i}em {padding-left: #{$i}em};
-  .f#{$i}em {font-size: #{$i}em}
-  .f#{$i}dem {font-size: #{$i/10}em}
+  .f#{$i}em {font-size: #{$i}em};
+  .f#{$i}dem {font-size: #{$i/10}em};
+  .rounded#{$i} {border-radius: #{$i}px;}
 }
 
 @for $i from 1 through 1000 {
@@ -103,10 +112,6 @@ $red8: rgb(247, 215, 215);
   .f#{$i}px {font-size: #{$i}px};
 }
 
-*::selection {
-  background-color: #000;
-  color: #fff;
-}
 
 html, body {
   padding: 0;
@@ -120,20 +125,70 @@ html, body {
 }
 
 .just {text-align: justify;}
-.cent {text-align: center;}
+.cent {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.centered {text-align: center;}
 .center {
   display: flex;
   justify-content: center;
 }
 .shadowed {text-shadow: 1px 2px 7px grey;}
 .box-shadowed {box-shadow: 5px 8px 10px $blue4;}
-.central {width: 80%; margin-left: 10%;}
+.central {
+  width: 80%; margin-left: 10%;
+  @media screen and (max-width: 768px) {
+    width: 100%; margin: 0;
+  }
+  h1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    @media screen and (max-width: 550px) {
+      flex-direction: column;
+    }
+  }
+}
 .central-small {
   width: 50%; margin-left: 25%;
   @media screen and (max-width: 768px) {
     width: 80%; margin-left: 10%;
   }
 }
+.central-small1 {
+  width: 50%;
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
+}
+.inline {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  div {
+    width: 31%;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    // background: linear-gradient($blue5,$blue7);
+    background-color: $blue7;
+    transition: 500ms background-color ease;
+    &:hover {
+      background-color: $blue6;
+    }
+    @media screen and (max-width: 768px) {
+      justify-content: space-around;
+      width: 33%;
+    }
+  }
+}
+
+.invisible {display: none};
+.success {background-color: green;}
 .active {font-weight: bold;}
 .top-shadow {background: linear-gradient(black, rgba(0, 0, 0, 0));}
 .relative {position: relative; text-align: center}
@@ -141,26 +196,50 @@ html, body {
 .fixed {position: fixed; text-align: center}
 .sticky {position: sticky; text-align: center}
 .bordered {border: 2px solid black}
+.round-bordered {border: 2px solid black; border-radius: 40px; box-shadow: 4px 10px 12px rgb(148, 148, 148);}
 .w-third {width: 33,3333333%}
 .w100p {width: 100%}
+.mw80 {max-width: 80%}
+.mw90 {max-width: 90%}
 .mw100 {max-width: 100%}
 .sticky-bottom {position: sticky; bottom: 0;}
 .fixed-bottom {position: fixed; bottom: 0;}
-.bg-hotel {background-image: url(../pictures/bg/hotel-2-0-qualite-superieure.jpg); background-size: cover; background-repeat: none;}
-.bg-blur {background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(4px);}
+.bg-hotel {background-image: url(../pictures/bg/princess_suite.webp); background-size: cover; background-repeat: none;}
+.bg-blur {
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  transition: 600ms backdrop-filter ease;
+  &:hover {
+    backdrop-filter: blur(15px);
+  }
+}
+.red-link {
+  text-decoration: none;
+  color: red;
+  transition: 300ms color ease;
+  &:hover {
+    color: rgb(142, 12, 12);
+  }
+}
 .bg-red {background-color: red;}
+.bg-light-red {background-color: $red8}
+.bg-grad-light-red {background: linear-gradient(white, $red8, white)}
+.bg-grad-light-blue {background: linear-gradient(white, $blue6, white)}
 .bg-black {background-color: black;}
+.bg-white {background-color: white;}
 .bg-green {background-color: green;}
 .bg-blue {background-color: blue;}
 .bg-light-blue {background-color: rgb(206, 206, 240);}
 .bg-brown {background-color: brown;}
 .bg-cyan {background-color: cyan;}
+.bg-light-cyan {background-color: rgb(215, 243, 243);}
 .bg-yellow {background-color: yellow;}
 .bg-red {background-color: red;}
 .bg-cool {background: linear-gradient($blue5,$blue7);}
 .bg-drunk-tank-pink {background-color: rgb(255, 145, 174);}
 .bg-cool1 {background: linear-gradient($blue7, $blue6);}
 .bg-transparent {background-color: rgba(0, 0, 0, .5);}
+.bg-transparent0 {background-color: rgba(0, 0, 0, 0);}
 
 .f-green {color: green;}
 .f-blue {color: blue;}
@@ -168,8 +247,10 @@ html, body {
 .f-cyan {color: cyan;}
 .f-yellow {color: yellow;}
 .f-purple {color: purple}
+.f-larger {font-size: 1.5rem;}
+.f-larger1 {font-size: 1.2rem;}
 .border-horizontal {border-top: 1px solid black; border-bottom: 1px solid black;}
-.white-border-horizontal {border-top: 1px solid #fff; border-bottom: 1px solid #fff;}
+.white-border-horizontal {border-top: 1px solid #fff; border-bottom: 1px solid #fff;; padding: 10px}
 .comfortaa {font-family: $comfortaa;}
 .hubbali {font-family: $hubbali;letter-spacing: 2px;}
 .quicksand {font-family: $quicksand;letter-spacing: 2px;}
@@ -177,6 +258,8 @@ html, body {
 .bold {font-weight: bold;}
 .mt1em5 {margin-top: 1.5em}
 .large {font-weight: large;}
+.pointer {cursor: pointer}
+h1 img {margin: 0 30px; height: 20px}
 
 .flex {
   display: flex;
@@ -202,20 +285,13 @@ html, body {
 //   75% {transform: translate(4px);}
 // }
 
-input {
+input, select {
   width: 70%;
+  margin-left: 15%;
   @media screen and (max-width: 768px) {
     width: 80%;
+    margin-left: 10%;
   }
-}
-
-select {
-  width: 71%;
-  @media screen and (max-width: 768px) {
-    width: 81%;
-  }
-  text-align: center;
-  height: 1.5rem;
 }
 
 .grad {
@@ -223,24 +299,16 @@ select {
   background-size: 200% 200%;
   animation: movinGradient 5s linear infinite alternate;
 }
+
+.grad-grey {
+  background-image: linear-gradient(to bottom right, rgb(225,224,220) 0%, rgb(92, 84, 53) 40%, rgb(164, 162, 152) 60%, rgb(212, 197, 138) 100%);
+  background-size: 200% 200%;
+  animation: movinGradient 5s linear infinite alternate;
+}
+
 @keyframes movinGradient {
   from {background-position: 0 0}
   to {background-position: 100% 100%}
-}
-
-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 5%;
-  bottom: 0;
-  background: $blue6;
-  opacity: 0.6;
-  text-align: center;
-  span {
-    padding-right: 5px;
-  }
 }
 
 .img {height: 1em;}
@@ -266,8 +334,12 @@ nav {
 
 .logo {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  h1 {
+    margin-left: 1em;
+    text-align:   center;
+  }
 }
 
 .menu {
@@ -293,6 +365,23 @@ a {
   transition: 400ms all ease;
   &:hover {
     color: $blue0;
+  }
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 5%;
+  bottom: 0;
+  background: $blue6;
+  opacity: 0.6;
+  text-align: center;
+  span {
+    font-weight: bold;
+    color: $blue0;
+    padding-right: 5px;
   }
 }
 
@@ -327,14 +416,20 @@ a {
   &:hover {
     background-color: rgba(255, 255, 255, 0.3);
   }
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
 }
 
 .btn3 {
+  margin-left: 0;
+  text-align: center;
   display: inline-flex;
   flex: 0 0 auto;
   position: relative;
   height: 55px;
   width: 220px;
+  max-width: 80%;
   background-color: transparent;
   color: black;
   border-radius: 10px;
@@ -344,16 +439,67 @@ a {
   align-items: center;
   transition: 400ms background-color ease;
   &:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(190, 189, 189, 0.3);
   }
   @media screen and (max-width: 768px) {
     width: 80%;
   }
 }
 
+.btn4 {
+  padding: 0;
+  margin: 10px;
+  max-width: 7em;
+  color: $blue0;
+  text-decoration: none;
+  font-family: $neutra;
+  font-size: 1.2rem;
+  border: none;
+  background: rgba(255, 255, 255, 0);
+  transition: 400ms all ease;
+  border-radius: 10px;
+  cursor: pointer;&:hover {
+    transform: translate(0, -5px);
+    box-shadow: 5px 0 8px gray;
+  }
+}
+
 .bg {
-  left: 0; top: 0; right: 0;
+  left: 0;
+  top: 0;
+  right: 0;
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+  width: 90%;
+  margin-left: 5%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 4em;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.reduce {
+  width: 90%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    font-size: 0.4rem;
+  }
+}
+
+.font-reduce {
+  font-size: 1.3rem;
+  top: 8em;
+  @media screen and (max-width: 768px) {
+    font-size: 2rem;
+    top: 6.5em;
+  }
+}
+
+.hide {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
 .section {
@@ -373,18 +519,26 @@ a {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-content: center;
   align-items: center;
   text-align: center;
   overflow: hidden;
   margin: .2% 0;
+  h3 {top: 3em};
+  div {top: 7em};
+  @media screen and (max-width: 768px) {
+    h3 {
+      top: 2em;
+    }
+  }
 }
 
 .flex-title {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  margin: 1em 0;
 }
 
 tr {
@@ -416,6 +570,8 @@ table {
     width: 100%;
   }
 }
+
+
 
 
 
